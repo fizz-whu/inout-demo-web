@@ -3,18 +3,18 @@
 
 const AWS_CONFIG = {
     // Lex Bot Configuration
-    LEX_BOT_ID: 'REPLACE_ME',           // e.g., 'CnRes001'
-    LEX_BOT_ALIAS_ID: 'REPLACE_ME',     // e.g., 'TSTALIASID'
-    LEX_BOT_LOCALE_ID: 'REPLACE_ME',    // e.g., 'en_US'
+    LEX_BOT_ID: 'QIBGB1HECL',           // CnRes006 bot
+    LEX_BOT_ALIAS_ID: 'TSTALIASID',     // TestBotAlias
+    LEX_BOT_LOCALE_ID: 'en_US',         // English (US)
 
     // Cognito Identity Pool
-    COGNITO_IDENTITY_POOL_ID: 'REPLACE_ME', // e.g., 'us-east-1:12345678-1234-1234-1234-123456789012'
+    COGNITO_IDENTITY_POOL_ID: 'us-west-2:85221a4d-9a9b-41a7-a4d5-5f826c62ee81', // CnRes0_ios_access
 
     // AWS Region
-    AWS_REGION: 'REPLACE_ME',           // e.g., 'us-east-1'
+    AWS_REGION: 'us-west-2',            // US West (Oregon)
 
     // Optional: Orders API Configuration
-    ORDERS_API_URL: '',                 // e.g., 'https://your-api-id.execute-api.us-east-1.amazonaws.com/prod'
+    ORDERS_API_URL: '',                 // e.g., 'https://your-api-id.execute-api.us-west-2.amazonaws.com/prod'
 };
 
 // Validate configuration
