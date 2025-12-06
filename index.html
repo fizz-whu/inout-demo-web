@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Order Kiosk</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="12" y1="18" x2="12" y2="12"></line>
+                        <line x1="9" y1="15" x2="15" y2="15"></line>
+                    </svg>
+                </div>
+            </div>
+            <h1 class="header-title">Voice Order Kiosk</h1>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="main-container">
+        <!-- Chat Section (60% height) -->
+        <section class="chat-section">
+            <div class="section-header">
+                <h2>Conversation</h2>
+                <button id="clearChatBtn" class="clear-btn">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    Clear
+                </button>
+            </div>
+
+            <div class="chat-messages-container">
+                <div id="chatMessages" class="chat-messages">
+                    <!-- Messages will be added here dynamically -->
+                </div>
+
+                <!-- Listening Indicator (always visible) -->
+                <div class="listening-indicator-container">
+                    <div class="audio-visualizer">
+                        <div class="audio-bar" data-index="0"></div>
+                        <div class="audio-bar" data-index="1"></div>
+                        <div class="audio-bar" data-index="2"></div>
+                        <div class="audio-bar" data-index="3"></div>
+                        <div class="audio-bar" data-index="4"></div>
+                        <div class="audio-bar" data-index="5"></div>
+                        <div class="audio-bar" data-index="6"></div>
+                        <div class="audio-bar" data-index="7"></div>
+                        <div class="audio-bar" data-index="8"></div>
+                        <div class="audio-bar" data-index="9"></div>
+                        <div class="audio-bar" data-index="10"></div>
+                        <div class="audio-bar" data-index="11"></div>
+                        <div class="audio-bar" data-index="12"></div>
+                        <div class="audio-bar" data-index="13"></div>
+                        <div class="audio-bar" data-index="14"></div>
+                    </div>
+                    <div class="status-badge">
+                        <span class="status-dot"></span>
+                        <span id="statusText" class="status-text">Ready</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders Section (40% height) -->
+        <section class="orders-section">
+            <div class="orders-header">
+                <div class="orders-title-group">
+                    <svg class="orders-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <h2>Today's Orders</h2>
+                </div>
+                <button id="clearOrdersBtn" class="clear-btn">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                    Clear
+                </button>
+            </div>
+
+            <div id="ordersContainer" class="orders-container">
+                <!-- Empty state -->
+                <div id="ordersEmpty" class="orders-empty">
+                    <div class="empty-icon-circle">
+                        <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M3 3h18v18H3z"></path>
+                            <path d="M3 9h18"></path>
+                            <path d="M9 21V9"></path>
+                        </svg>
+                    </div>
+                    <h3>No orders yet</h3>
+                    <p>Orders will appear here once confirmed</p>
+                </div>
+                <!-- Orders will be added here dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Configuration Modal -->
+    <div id="configModal" class="modal">
+        <div class="modal-content">
+            <h2>Configuration Required</h2>
+            <p>Please configure your AWS settings in config.js before using the app.</p>
+            <div class="config-fields">
+                <div class="config-field">
+                    <label>LEX_BOT_ID:</label>
+                    <span id="configBotId">Not set</span>
+                </div>
+                <div class="config-field">
+                    <label>LEX_BOT_ALIAS_ID:</label>
+                    <span id="configAliasId">Not set</span>
+                </div>
+                <div class="config-field">
+                    <label>LEX_BOT_LOCALE_ID:</label>
+                    <span id="configLocaleId">Not set</span>
+                </div>
+                <div class="config-field">
+                    <label>COGNITO_IDENTITY_POOL_ID:</label>
+                    <span id="configPoolId">Not set</span>
+                </div>
+                <div class="config-field">
+                    <label>AWS_REGION:</label>
+                    <span id="configRegion">Not set</span>
+                </div>
+            </div>
+            <button id="closeConfigBtn" class="modal-btn">Close</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="aws-signer.js"></script>
+    <script src="lex-service.js"></script>
+    <script src="speech-service.js"></script>
+    <script src="orders-service.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
